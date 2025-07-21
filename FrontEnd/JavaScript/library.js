@@ -223,3 +223,13 @@ submitBook.addEventListener('click', async (event) => {
 
 // Initial Render (no localStorage, just render empty or with future sync)
 renderAllBooks();
+
+const clearBooksBtn = document.getElementById("clearBooksBtn");
+
+clearBooksBtn.addEventListener("click", () => {
+    if (confirm("Are you sure you want to remove all books?")) {
+        books = [];
+        renderAllBooks();
+        console.log("All books cleared.");
+    }
+});
