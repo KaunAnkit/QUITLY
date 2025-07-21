@@ -1,0 +1,429 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        background: #f7f9fc;
+        color: #222;
+    }
+
+    .container {
+        display: flex;
+    }
+
+    .sidebar {
+        width: 250px;
+        background: white;
+        height: 100vh;
+        padding: 2rem 1rem;
+        border-right: 1px solid #ddd;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .sidebar h2 {
+        color: #6b4efc;
+        font-weight: 800;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .sidebar nav a {
+        display: block;
+        padding: 16px 15px;
+        border-radius: 8px;
+        margin: 0.3rem 0;
+        text-decoration: none;
+        color: #333;
+        transition: 0.3s;
+    }
+
+    .sidebar nav a.active,
+    .sidebar nav a:hover {
+        background: #eef0ff;
+        color: #6b4efc;
+    }
+
+    .icon1 {
+        display: flex;
+    }
+
+    .icon1 p {
+        margin-left: 13px;
+        font-weight: 500;
+    }
+
+    .sidebarMargin {
+        margin-top: -32vh;
+    }
+
+    .user {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.9rem;
+    }
+
+    .user img {
+        width: 40px;
+        border-radius: 50%;
+    }
+
+    .dashboard {
+        flex-grow: 1;
+        padding: 2rem;
+    }
+
+    .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .welcome h1 {
+        font-weight: 700;
+        font-size: 2rem;
+        font-family: serif;
+    }
+
+    .welcome p {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .search-add-book {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .search-box {
+        display: flex;
+        align-items: center;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 8px 12px;
+        width: 300px;
+    }
+
+    .search-box .material-symbols-outlined {
+        font-size: 20px;
+        color: #888;
+        margin-right: 8px;
+    }
+
+    .search-box input {
+        border: none;
+        outline: none;
+        flex-grow: 1;
+        font-size: 0.95rem;
+        color: #333;
+    }
+
+    .add-book-button {
+        background-color: #4f86ff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.95rem;
+        font-weight: 600;
+        transition: background-color 0.2s ease;
+    }
+
+    .add-book-button:hover {
+        background-color: #3f6fd1;
+    }
+
+    .library-filters {
+        margin-bottom: 2rem;
+        display: flex;
+        gap: 10px;
+    }
+
+    .filter-button {
+        background-color: #e0e0e0;
+        color: #555;
+        padding: 8px 18px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .filter-button.active {
+        background-color: #4f86ff;
+        color: white;
+    }
+
+    .filter-button:hover:not(.active) {
+        background-color: #d0d0d0;
+    }
+
+    /* NEW WRAPPER FOR FLIPBOOK */
+    .flipbook-wrapper {
+        margin-top: 2rem;
+        width: 100%;
+        max-width: 1200px; /* Adjust this max-width as desired for your layout */
+        height: 700px; /* Adjust this fixed height as desired */
+        max-height: 80vh; /* Or adjust this percentage for responsiveness */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        border: 1px solid #ddd;
+    }
+
+    /* FLIPBOOK CONTAINER (inside the wrapper) */
+    #flipbook {
+        margin-top: 0;
+        background: white;
+        box-shadow: none; /* Let wrapper handle outer shadow, individual pages may have subtle shadows */
+        border-radius: 0;
+        overflow: hidden;
+    }
+
+    /* Individual pages inside flipbook are divs wrapping canvas added dynamically by JS */
+    #flipbook > div {
+        box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    /* Specific class for the flipbook element */
+    .flipbook {
+        margin-top: 0; /* Handled by wrapper's margin-top */
+        border: none; /* Handled by wrapper's border */
+        /* min-width and min-height are removed as turn.js will set specific width/height */
+    }
+
+    .dashboard h1{
+        font-family: serif;
+    }
+
+    /* New styles for the collection header */
+    .collection-header {
+        display: flex;
+        justify-content: space-between; /* Pushes items to opposite ends */
+        align-items: center; /* Vertically aligns items in the middle */
+        margin-bottom: 1.5rem; /* Add some space below this section */
+        margin-top: 2rem; /* Add some space above this section to separate from filters */
+    }
+
+    .yourCollection{
+        font-size: 2rem; /* Adjusted font size for heading consistency if needed */
+        font-weight: 700; /* Made it bold */
+        margin-bottom: 0; /* Remove default bottom margin as flex handles spacing */
+    }
+
+    .add-book-button2 {
+        /* Removed fixed margins for responsive positioning */
+        background-color: #4f86ff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.95rem;
+        font-weight: 600;
+        transition: background-color 0.2s ease;
+    }
+
+    .add-book-button2:hover {
+        background-color: #3f6fd1;
+    }
+
+    /* Modal Container (already shared before, repeated for context) */
+    .modal_container {
+        background-color: rgba(0, 0, 0, 0.3);
+        position: fixed;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        z-index: 999;
+    }
+
+    .modal_container.show {
+        display: flex;
+    }
+
+    /* Modal Box */
+    .modal {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        width: 600px;
+        max-width: 90%;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Form Elements */
+    .add-book-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .add-book-form label {
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+
+    .add-book-form input[type="text"],
+    .add-book-form input[type="file"] {
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline: none;
+        transition: border-color 0.3s;
+    }
+
+    .add-book-form input[type="text"]:focus,
+    .add-book-form input[type="file"]:focus {
+        border-color: #666;
+    }
+
+    /* Checkbox row */
+    .add-book-form div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* Modal Buttons */
+    .modal-buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .add-book-submit,
+    #closeModal {
+        padding: 10px 20px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .add-book-submit {
+        background-color: #375eb2;
+        color: white;
+    }
+
+    #closeModal {
+        background-color: #e0e0e0;
+        color: #333;
+    }
+
+    .add-book-submit:hover {
+        background-color: #3f6fd1;
+    }
+
+    #closeModal:hover {
+        background-color: #ccc;
+    }
+
+
+    /* Card ki Details hai */
+
+
+
+/* Ensure the container is set up for a grid layout */
+.book-grid-container {
+    display: grid; /* Use CSS Grid for robust layout */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Creates columns that are at least 180px wide, and as wide as possible up to 1fr (fraction of available space) */
+    gap: 20px; /* Provides consistent spacing between cards */
+    padding: 20px; /* Padding around the entire grid */
+    justify-content: start; /* Align items to the start of the grid axis */
+    align-items: start; /* Align items to the start of the cross axis */
+}
+
+.bookCard {
+    background-color: #e0f7fa; 
+    border: 1px solid #00bcd4; 
+    border-radius: 8px;
+    padding: 15px; 
+    margin: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    height: 280px;
+    width: 180px; 
+    
+    
+    display: flex; 
+    flex-direction: column;
+    justify-content: flex-end; 
+    
+    overflow: hidden; 
+    position: relative; 
+    box-sizing: border-box; 
+
+    /* Background image properties - these will be overridden by JS if coverUrl is present */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+   
+    color: white; 
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7); 
+    
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition for hover */
+}
+
+.bookCard:hover {
+    transform: translateY(-5px) scale(1.02); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+    cursor: pointer;
+}
+
+
+.bookCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); 
+    z-index: 1; 
+    border-radius: 8px; 
+}
+
+.bookCard h3,
+.bookCard p {
+    
+    z-index: 2; 
+    
+    margin: 0; 
+    
+    padding-top: 5px; 
+}
+
+.bookCard h3 {
+    color: rgb(0, 0, 0); 
+    font-size: 1.1em;
+}
+
+.bookCard p {
+    color: #424242; 
+    font-size: 0.9em;
+}
+

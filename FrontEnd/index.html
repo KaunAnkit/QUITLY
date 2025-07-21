@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QUIYTLY - Dashboard</title>
+  <link rel="stylesheet" href="/FrontEnd/Css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>QUIYTLY</h2>
+      <nav class="sidebarMargin">
+           <a href="index.html" style="text-decoration: none; color: inherit;">
+             <div class="icon1">
+                    <span class="material-symbols-outlined">Work</span>
+                    <p>Dashboard</p>
+             </div>
+        </a>              
+        <a href="library.html" style="text-decoration: none; color: inherit;">
+                <div class="icon1">
+                    <span class="material-symbols-outlined">account_balance</span>                  
+                    <p>Library</p>
+                </div>
+        </a>
+        <a href="Reader.html" style="text-decoration: none; color: inherit;">
+                <div class="icon1">
+                    <span class="material-symbols-outlined">auto_stories</span>
+                    <p>Reader</p>
+                </div>
+        </a>    
+        <a href="settings.html" style="text-decoration: none; color: inherit;">
+                <div class="icon1">
+                    <span class="material-symbols-outlined">person</span>
+                    <p>Profile</p>
+                </div>
+        </a>
+        <a href="settings.html" style="text-decoration: none; color: inherit;">
+            <div class="icon1">
+                <span class="material-symbols-outlined">settings</span>
+                <p>Settings</p>
+            </div>
+        </a>
+      </nav>
+      <div class="user">
+        <img src="https://i.pravatar.cc/40" alt="Profile picture" />
+        <div>
+          <strong>Ankit Jha</strong>
+          <p>Ankit@example.com</p>
+        </div>
+      </div>
+    </aside>
+
+    <main class="dashboard">
+      <header class="top-bar">
+        <div class="welcome">
+          <h1>Dashboard</h1>
+          <p>Welcome back to your reading journey</p>
+        </div>
+        <div class="streak-box">
+          🔥 7 Day Streak<br><span>Keep it up!</span>
+        </div>
+        <div class="profile">
+          <img src="https://i.pravatar.cc/40" alt="John" />
+          <div>
+            <strong>Ankit Jha</strong>
+            <p>Premium Reader</p>
+          </div>
+        </div>
+      </header>
+
+      <section class="stats">
+        <div class="stat-card">
+          <div class="stat-header">
+            <h3>Books Read</h3>
+            <div class="icon-box icon-books">
+              <img src="/FrontEnd/Photos/notebook-minimalistic-svgrepo-com.svg" alt="Books icon" class="stat-icon">
+            </div>
+          </div>
+          <p class="value">24</p>
+          <p class="sub">+3 this month</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-header">
+            <h3>Reading Time</h3>
+            <div class="icon-box icon-time">
+              <img src="/FrontEnd/Photos/clock-svgrepo-com.svg" alt="Time icon" class="stat-icon">
+            </div>
+          </div>
+          <p class="value">142h</p>
+          <p class="sub">+12h this week</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-header">
+            <h3>Current Streak</h3>
+            <div class="icon-box icon-streak">
+              <img src="/FrontEnd/Photos/fire-svgrepo-com.svg" alt="Streak icon" class="stat-icon">
+            </div>
+          </div>
+          <p class="value">7 days</p>
+          <p class="sub">Personal best!</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-header">
+            <h3>Achievements</h3>
+            <div class="icon-box icon-achievements">
+              <img src="/FrontEnd/Photos/tick-circle-svgrepo-com.svg" alt="Achievements icon" class="stat-icon">
+            </div>
+          </div>
+          <p class="value">12</p>
+          <p class="sub">2 new badges</p>
+        </div>
+      </section>
+
+      <section class="reading-section">
+        <div class="currently-reading">
+          <h2>Currently Reading</h2>
+          <div class="book-card">
+            <div class="cover">BOOK</div>
+            <div class="details">
+              <h3>The Art of Programming</h3>
+              <p>by Donald Knuth</p>
+              <div class="progress-bar">
+                <div class="progress" style="width: 68%"></div>
+              </div>
+              <p>Chapter 12 of 18 • 45 minutes left</p>
+              <button>Continue Reading</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="goals">
+          <h2>Reading Goals</h2>
+          <div class="goal">
+            <p>Monthly Goal</p>
+            <div class="goal-bar green"><div style="width: 75%"></div></div>
+            <p>3/4 books</p>
+          </div>
+          <div class="goal">
+            <p>Daily Goal</p>
+            <div class="goal-bar blue"><div style="width: 75%"></div></div>
+            <p>45/60 min</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="recent-activity-section">
+        <div class="recent-activity-card">
+          <h2>Recent Activity</h2>
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-icon-box completed">
+                <img src="/FrontEnd/Photos/tick-circle-svgrepo-com.svg" alt="Completed icon" class="activity-icon">
+              </div>
+              <p>Completed "JavaScript: The Good Parts" <span class="activity-time">2 hours ago</span></p>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon-box started">
+                <img src="/FrontEnd/Photos/notebook-minimalistic-svgrepo-com.svg" alt="Started icon" class="activity-icon">
+              </div>
+              <p>Started reading "The Art of Programming" <span class="activity-time">Yesterday</span></p>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon-box streak">
+                <img src="/FrontEnd/Photos/fire-svgrepo-com.svg" alt="Streak icon" class="activity-icon">
+              </div>
+              <p>Achieved 7-day reading streak <span class="activity-time">2 days ago</span></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>

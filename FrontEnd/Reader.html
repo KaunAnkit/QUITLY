@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>QUIYTLY - Reader</title>
+    <link rel="stylesheet" href="/FrontEnd/Css/reader.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>QUIYTLY</h2>
+            <nav class="sidebarMargin">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <div class="icon1">
+                        <span class="material-symbols-outlined">Work</span>
+                        <p>Dashboard</p>
+                    </div>
+                </a>
+                <a href="library.html" style="text-decoration: none; color: inherit;">
+                    <div class="icon1">
+                        <span class="material-symbols-outlined">account_balance</span>
+                        <p>Library</p>
+                    </div>
+                </a>
+                <a href="#" style="text-decoration: none; color: inherit;">
+                    <div class="icon1">
+                        <span class="material-symbols-outlined">auto_stories</span>
+                        <p>Reader</p>
+                    </div>
+                </a>
+                <a href="settings.html" style="text-decoration: none; color: inherit;">
+                    <div class="icon1">
+                        <span class="material-symbols-outlined">person</span>
+                        <p>Profile</p>
+                    </div>
+                </a>
+                <a href="settings.html" style="text-decoration: none; color: inherit;">
+                    <div class="icon1">
+                        <span class="material-symbols-outlined">settings</span>
+                        <p>Settings</p>
+                    </div>
+                </a>
+            </nav>
+            <div class="user">
+                <img src="https://i.pravatar.cc/40" alt="Profile picture" />
+                <div>
+                    <strong>Ankit Jha</strong>
+                    <p>Ankit@example.com</p>
+                </div>
+            </div>
+        </aside>
+        <div class="main-content">
+            <div class="header-bar">
+                <button class="back-button">
+                    <span class="material-symbols-outlined">arrow_back_ios</span>
+                </button>
+                <div class="book-info">
+                    <span class="book-title">The Art of Programming</span>
+                    <span class="book-author">by Donald Knuth</span>
+                    
+                </div>
+                <div class="header-icons">
+                    <span class="material-symbols-outlined">bookmark</span>
+                    <span class="material-symbols-outlined">menu</span>
+                    <span class="material-symbols-outlined">settings</span>
+                </div>
+            </div>
+            <div class="pdf-viewer-area">
+                <div class="page-viewer-wrapper">
+                    <div id="page-viewer" class="page-content current-page">
+                        <p class="placeholder-text">Upload a PDF to view pages.</p>
+                    </div>
+                    <div id="page-overlay" class="page-content hidden">
+                    </div>
+                </div>
+            </div>
+
+            <div class="tools-section">
+                <div class="pagination">
+                    <button id="prev-page" class="page-nav-button">&lt; Previous</button>
+                    <span id="page-number">Page 0 of 0</span>
+                    <input type="text" value="1" class="page-input">
+                    <button class="go-button">Go</button>
+                    <button id="next-page" class="page-nav-button">Next &gt;</button>
+                </div>
+                <div class="reading-progress">
+                    <p>Reading Progress</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 0%;"></div>
+                    </div>
+                    <span class="progress-percentage">0% Complete</span>
+                    <span class="time-left">-- minutes left</span>
+                    <p class="chapter-info">Chapter -- of --</p>
+                    <label for="pdf-upload" class="uploadButton">
+                        Upload PDF
+                    </label>
+                    <input type="file" id="pdf-upload" accept="application/pdf" style="display: none;"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src=""></script>
+</body>
+</html>

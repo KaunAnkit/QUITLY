@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>QUIYTLY - Library</title>
+    <link rel="stylesheet" href="/FrontEnd/Css/library.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>QUIYTLY</h2>
+            <nav class="sidebarMargin">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <div class="icon1">
+                        <span class="material-symbols-outlined">Work</span>
+                        <p>Dashboard</p>
+                    </div>
+                </a>
+                <a href="#" class="active" style="text-decoration: none; color: inherit;">
+                    <div class="icon1">
+                        <span class="material-symbols-outlined">account_balance</span>
+                        <p>Library</p>
+                    </div>
+                </a>
+                <a href="Reader.html" style="text-decoration: none; color: inherit;">
+                    <div class="icon1">
+                        <span class="material-symbols-outlined">auto_stories</span>
+                        <p>Reader</p>
+                    </div>
+                </a>
+                <a href="settings.html" style="text-decoration: none; color: inherit;">
+                    <div class="icon1">
+                        <span class="material-symbols-outlined">person</span>
+                        <p>Profile</p>
+                    </div>
+                </a>
+                <a href="settings.html" style="text-decoration: none; color: inherit;">
+                    <div class="icon1">
+                        <span class="material-symbols-outlined">settings</span>
+                        <p>Settings</p>
+                    </div>
+                </a>
+            </nav>
+            <div class="user">
+                <img src="https://i.pravatar.cc/40" alt="Profile picture" />
+                <div>
+                    <strong>Ankit Jha</strong>
+                    <p>Ankit@example.com</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="dashboard">
+            <header class="top-bar library-top-bar">
+                <div class="welcome">
+                    <h1>Library</h1>
+                    <p>Discover and organize your book collection</p>
+                </div>
+                <div class="search-add-book">
+                    <div class="search-box">
+                        <span class="material-symbols-outlined">search</span>
+                        <input type="text" placeholder="Search books..." />
+                    </div>
+                    <button class="add-book-button">Search</button>
+                </div>
+            </header>
+
+            <section class="library-filters">
+                <button class="filter-button active">All Books</button>
+                <button class="filter-button">Currently Reading</button>
+                <button class="filter-button">Completed</button>
+                <button class="filter-button">Wishlist</button>
+            </section>
+
+            <div class="collection-header">
+                <h1 class="yourCollection">Your collection</h1>
+                <button class="add-book-button2">Add Book</button>
+            </div>
+            
+            <div class="modal_container" id="modalContainer">
+                <div class="modal">
+                    <h1>Add Book</h1>
+                    
+                    <form class="add-book-form" action="http://localhost:8000/coverpage" method="post" enctype="multipart/form-data">
+                        <label for="bookName">Book Name</label>
+                        <input type="text" id="bookName" name="bookName" placeholder="Enter book name" required />
+
+                        <label for="authorName">Author Name</label>
+                        <input type="text" id="authorName" name="authorName" placeholder="Enter author name" required />
+
+                        <label for="coverUpload">Upload Book Cover</label>
+                        
+                        <input type="file" id="coverUpload" name="coverupload" accept="image/*"/>
+                        
+
+                        <div style="margin: 10px 0;">
+                            <input type="checkbox" id="useFirstPage" name="useFirstPage" />
+                            <label for="useFirstPage">Use First Page as Cover</label>
+                        </div>
+
+                        <label for="pdfUpload">Upload Book PDF</label>
+                        <input type="file" id="pdfUpload" name="pdfUpload" accept="application/pdf" required />
+
+                        <div class="modal-buttons">
+                            <button type="submit" class="add-book-submit" id="add-book-submit">Add Book</button>
+                            <button type="button" id="closeModal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="bookCardsContainer" class="book-grid-container">
+
+
+            </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="/FrontEnd/JavaScript/library.js"></script>
+    
+</body>
+</html>
