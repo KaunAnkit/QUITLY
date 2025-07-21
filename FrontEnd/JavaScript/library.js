@@ -56,8 +56,8 @@ function cardCreator(BookName, AuthorName, coverUrl = null) {
     const cardPara = document.createElement('p');
     cardPara.textContent = `Author : ${AuthorName || "NA"}`;
 
-    //bookcard.appendChild(cardHeading);
-    //bookcard.appendChild(cardPara);
+    bookcard.appendChild(cardHeading);
+    bookcard.appendChild(cardPara);
 
     bookCardsContainer.appendChild(bookcard);
 }
@@ -178,7 +178,7 @@ submitBook.addEventListener('click', async (event) => {
                 authorName: currentAuthorNameValue,
                 coverUrl: uploadResult.data.coverUrl,
                 pdfUrl: uploadResult.data.pdfUrl,
-                coverUpload: coverFile ? coverFile.name : '',
+                coverUpload: coverFile.name,
                 pdfUpload: pdfFile ? pdfFile.name : '',
                 useFirstPage: useFirstPage.checked,
                 uploadedAt: new Date().toISOString()
@@ -221,14 +221,15 @@ submitBook.addEventListener('click', async (event) => {
     }
 });
 
-// Initial Render (no localStorage, just render empty or with future sync)
+// Initial Render (no localStorage, just empty)
 renderAllBooks();
 
+// Clear Books Button
 const clearBooksBtn = document.getElementById("clearBooksBtn");
 
 clearBooksBtn.addEventListener("click", () => {
     if (confirm("Are you sure you want to remove all books?")) {
-        books = [];
+        books.length = 0;
         renderAllBooks();
         console.log("All books cleared.");
     }
