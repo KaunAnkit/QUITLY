@@ -218,10 +218,15 @@ renderAllBooks();
 // Clear Books Button
 const clearBooksBtn = document.getElementById("clearBooksBtn");
 
-clearBooksBtn.addEventListener("click", () => {
-    if (confirm("Are you sure you want to remove all books?")) {
-        books.length = 0;
-        renderAllBooks();
-        console.log("All books cleared.");
-    }
-});
+function cleaningbook(){
+        clearBooksBtn.addEventListener("click", () => {
+        if (confirm("Are you sure you want to remove all books?")) {
+            books.length = 0;
+            renderAllBooks();
+            console.log("All books cleared.");
+        }
+    });
+
+}
+
+cleaningbook();
