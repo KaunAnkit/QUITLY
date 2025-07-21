@@ -61,7 +61,7 @@ router.post("/", upload.single("coverupload"), async (req, res) => {
         const result = await cloudinary.uploader.upload(req.file.path, {
             folder: "book_covers",
             resource_type: "auto",
-            public_id: `book_${Date.now()}` // Optional: give it a unique name
+            public_id: `book_${Date.now()}` //gives it a unique name
         });
 
         console.log("✅ Cloudinary upload successful!");
