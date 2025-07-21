@@ -56,8 +56,8 @@ function cardCreator(BookName, AuthorName, coverUrl = null) {
     const cardPara = document.createElement('p');
     cardPara.textContent = `Author : ${AuthorName || "NA"}`;
 
-    bookcard.appendChild(cardHeading);
-    bookcard.appendChild(cardPara);
+    //bookcard.appendChild(cardHeading);
+    //bookcard.appendChild(cardPara);
 
     bookCardsContainer.appendChild(bookcard);
 }
