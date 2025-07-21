@@ -40,8 +40,6 @@ function cardCreator(BookName, AuthorName, coverUrl = null) {
         bookcard.style.backgroundImage = `url(${coverUrl})`;
         bookcard.style.backgroundSize = 'cover';
         bookcard.style.backgroundPosition = 'center';
-        bookcard.style.color = 'white';
-        bookcard.style.textShadow = '1px 1px 2px rgba(0,0,0,0.7)';
     } else {
         const randomHue = Math.floor(Math.random() * 360);
         const saturation = 70;
@@ -50,17 +48,10 @@ function cardCreator(BookName, AuthorName, coverUrl = null) {
         bookcard.style.backgroundColor = randomColor;
     }
 
-    const cardHeading = document.createElement('h3');
-    cardHeading.textContent = BookName;
-
-    const cardPara = document.createElement('p');
-    cardPara.textContent = `Author : ${AuthorName || "NA"}`;
-
-    bookcard.appendChild(cardHeading);
-    bookcard.appendChild(cardPara);
-
+    
     bookCardsContainer.appendChild(bookcard);
 }
+
 
 function renderAllBooks() {
     console.log("[renderAllBooks] Rendering all books...");
