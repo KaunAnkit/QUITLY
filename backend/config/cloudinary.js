@@ -1,33 +1,77 @@
-import { v2 as cloudinary } from 'cloudinary';
-import dotenv from 'dotenv';
+import express from "express";
+import multer from "multer";
+import cloudinary from "../config/cloudinary.js";
+import fs from "fs";
 
-// Load environment variables
-dotenv.config();
+const router = express.Router();
 
-console.log("🔧 Loading Cloudinary config...");
-console.log("📋 Environment variables check:");
-console.log("- CLOUDINARY_CLOUD_NAME:", process.env.CLOUDINARY_CLOUD_NAME || "❌ NOT SET");
-console.log("- CLOUDINARY_API_KEY:", process.env.CLOUDINARY_API_KEY ? "✅ SET" : "❌ NOT SET");
-console.log("- CLOUDINARY_API_SECRET:", process.env.CLOUDINARY_API_SECRET ? "✅ SET" : "❌ NOT SET");
-
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+// Configure multer
+const upload = multer({ 
+    dest: "uploads/",
+    limits: { fileSize: 50 * 1024 * 1024 } // 50MB limit for PDF
 });
 
-// Verify configuration
-const config = cloudinary.config();
-console.log("☁️ Cloudinary configured with cloud_name:", config.cloud_name);
+// Test Cloudinary connection
+router.get("/test", async (req, res) => {
+    try {
+        const result = await cloudinary.api.ping();
+        res.json({ success: true, message: "Cloudinary connected", result });
+    } catch (err) {
+        res.status(500).json({ success: false, message: "Cloudinary connection failed", error: err.message });
+    }
+});
 
-if (!config.cloud_name || !config.api_key || !config.api_secret) {
-  console.error("❌ Cloudinary configuration is incomplete!");
-  console.error("Please check your .env file contains:");
-  console.error("CLOUDINARY_CLOUD_NAME=your_cloud_name");
-  console.error("CLOUDINARY_API_KEY=your_api_key");  
-  console.error("CLOUDINARY_API_SECRET=your_api_secret");
-} else {
-  console.log("✅ Cloudinary configuration loaded successfully");
-}
+// POST route for multiple file upload
+router.post("/", upload.fields([
+    { name: "coverupload", maxCount: 1 },
+    { name: "pdfUpload", maxCount: 1 }
+]), async (req, res) => {
+    try {
+        const coverFile = req.files.coverupload?.[0];
+        const pdfFile = req.files.pdfUpload?.[0];
 
-export default cloudinary;
+        if (!coverFile) return res.status(400).json({ success: false, message: "No cover image uploaded" });
+        if (!pdfFile) return res.status(400).json({ success: false, message: "No PDF uploaded" });
+
+        // Upload cover to Cloudinary
+        const coverResult = await cloudinary.uploader.upload(coverFile.path, {
+            folder: "book_covers",
+            resource_type: "auto",
+            public_id: `book_${Date.now()}`
+        });
+
+        // Optionally: Upload PDF to Cloudinary (resource_type 'raw')
+        const pdfResult = await cloudinary.uploader.upload(pdfFile.path, {
+            folder: "book_pdfs",
+            resource_type: "raw",
+            public_id: `book_${Date.now()}_pdf`
+        });
+
+        // Cleanup local files
+        [coverFile.path, pdfFile.path].forEach(path => {
+            if (fs.existsSync(path)) fs.unlinkSync(path);
+        });
+
+        res.json({
+            success: true,
+            message: "Files uploaded successfully",
+            data: {
+                bookName: req.body.bookName,
+                authorName: req.body.authorName,
+                coverUrl: coverResult.secure_url,
+                pdfUrl: pdfResult.secure_url
+            }
+        });
+
+    } catch (err) {
+        console.error(err);
+        if (req.files) {
+            Object.values(req.files).flat().forEach(f => {
+                if (fs.existsSync(f.path)) fs.unlinkSync(f.path);
+            });
+        }
+        res.status(500).json({ success: false, message: "Upload failed", error: err.message });
+    }
+});
+
+export default router;
